@@ -11,4 +11,5 @@
             disabled="false"
         />
     </type>
+    <preference for="Magento\Catalog\Model\Product" type="Training\Helloworld\Rewrite\Product" />
 </config>
