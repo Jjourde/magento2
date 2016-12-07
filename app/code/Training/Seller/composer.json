@@ -1,0 +1,11 @@
+{
+  "name": "training/seller",
+  "description": "Training Seller",
+  "type": "magento2-module",
+  "version": "0.1",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ]
+  }
+}
