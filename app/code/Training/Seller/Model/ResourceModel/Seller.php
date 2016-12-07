@@ -34,7 +34,7 @@ class Seller extends AbstractResource
      */
     protected function _construct()
     {
-        $this->_init('training_seller', 'seller_id');
+        $this->_init('training_seller', SellerInterface::SELLER_ID);
     }
 
     /**

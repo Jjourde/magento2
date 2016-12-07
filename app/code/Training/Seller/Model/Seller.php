@@ -12,6 +12,7 @@ namespace Training\Seller\Model;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
 use Training\Seller\Api\Data\SellerInterface;
+use Training\Seller\Model\ResourceModel\Seller as SellerResourceModel;
 
 class Seller extends AbstractModel implements IdentityInterface, SellerInterface
 {
@@ -27,7 +28,7 @@ class Seller extends AbstractModel implements IdentityInterface, SellerInterface
 
     public function _construct()
     {
-        $this->_init('Training\Seller\Model\ResourceModel\Seller');
+        $this->_init(SellerResourceModel::class);
     }
 
     /**
