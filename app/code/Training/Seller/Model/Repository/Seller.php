@@ -16,12 +16,13 @@ use Training\Seller\Api\Data\SellerInterface;
 use Training\Seller\Api\Data\SellerSearchResultsInterface;
 use Training\Seller\Api\SellerRepositoryInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Magento\Framework\Api\SearchResults;
 use Magento\Framework\Model\AbstractModel;
 
 class Seller extends AbstractRepository implements SellerRepositoryInterface
 {
-    public function __construct(\Training\Seller\Model\SellerFactory $objectFactory, \Training\Seller\Model\ResourceModel\Seller $objectResource, SearchResults $searchResultsFactory)
+    public function __construct(\Training\Seller\Model\SellerFactory $objectFactory,
+                                \Training\Seller\Model\ResourceModel\Seller $objectResource,
+                                \Training\Seller\Api\Data\SellerSearchResultsInterfaceFactory $searchResultsFactory)
     {
         parent::__construct($objectFactory, $objectResource, $searchResultsFactory);
         $this->setIdentifierFieldName(SellerInterface::IDENTIFIER);
