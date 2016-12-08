@@ -7,20 +7,28 @@ namespace Training\Seller\Controller\Seller;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\Context;
+use Training\Seller\Api\Data\SellerSearchResultsInterface;
 use Training\Seller\Api\SellerRepositoryInterface;
 use Training\Seller\Model\Seller;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
     private $sellerRepositoryInterface;
     private $searchCriteriaBuilder;
+    private $registry;
+    private $pageFactory;
 
     public function __construct(Context $context, SellerRepositoryInterface $sellerRepositoryInterface,
-                                SearchCriteriaBuilder $searchCriteriaBuilder)
+                                SearchCriteriaBuilder $searchCriteriaBuilder, Registry $registry,
+                                PageFactory $pageFactory)
     {
         parent::__construct($context);
         $this->sellerRepositoryInterface = $sellerRepositoryInterface;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->registry = $registry;
+        $this->pageFactory = $pageFactory;
     }
 
     /**
@@ -31,13 +39,11 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $criteria = $this->searchCriteriaBuilder->create();
-        $sellers = $this->sellerRepositoryInterface->getList($criteria)->getItems();
+        /** @var SellerSearchResultsInterface $sellersSearchResult */
+        $sellersSearchResult = $this->sellerRepositoryInterface->getList($criteria);
 
-        /** @var Seller $seller */
-        $this->getResponse()->appendBody('<ul>');
-        foreach ($sellers as $seller) {
-            $this->getResponse()->appendBody('<li>Seller: ' . $seller->getId() . ', ' . $seller->getIdentifier() . ', ' . $seller->getName());
-        }
-        $this->getResponse()->appendBody('</ul>');
+        $this->registry->register('sellers', $sellersSearchResult);
+
+        return $this->pageFactory->create();
     }
 }

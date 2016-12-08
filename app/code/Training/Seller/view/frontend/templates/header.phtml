@@ -1,0 +1,6 @@
+<?php
+    $helper = $this->helper('Training\Seller\Helper\Url');
+?>
+<div style="border: 1px solid <?php echo $this->getBorderColor(); ?>; background: <?php echo $this->getBackgroundColor(); ?>">
+    <a href="<?php echo $helper->getSellersUrl() ?>"><?php echo __('Sellers List'); ?></a>
+</div>
