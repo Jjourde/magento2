@@ -14,7 +14,7 @@ interface SellerRepositoryInterface
      * Get info about seller by seller_id
      *
      * @param int $sellerId
-     * @return SellerInterface
+     * @return \Training\Seller\Api\Data\SellerInterface
      * @throws
      */
     public function getById($sellerId);
@@ -23,7 +23,7 @@ interface SellerRepositoryInterface
      * Get info about seller by identifier
      *
      * @param string $identifier
-     * @return SellerInterface
+     * @return \Training\Seller\Api\Data\SellerInterface
      * @throws NoSuchEntityException
      */
     public function getByIdentifier($identifier);
@@ -40,7 +40,7 @@ interface SellerRepositoryInterface
      * Create seller
      *
      * @param SellerInterface $seller
-     * @return SellerInterface
+     * @return \Training\Seller\Api\Data\SellerInterface
      * @throws CouldNotSaveException
      */
     public function save(SellerInterface $seller);

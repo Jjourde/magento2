@@ -12,6 +12,6 @@ $params = [
         'username' => 'admin',
         'password' => 'Lveen2016',
     ],
-    'soap_token' => 'm0x7s9so858mo9dd24yvjmnqkdvoco6n',
+    'soap_token' => 'qkqm7snoo3f8cnpae7gcp5rae1gnl3ks',
     'exception_on_error' => false,
 ];

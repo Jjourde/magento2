@@ -21,7 +21,7 @@ class Seller extends AbstractResource
     protected $dateTime;
 
     public function __construct(Context $context, EntityManager $entityManager, MetadataPool $metadataPool,
-                                $connectionName, DateTime $dateTime)
+                                DateTime $dateTime, $connectionName = null)
     {
         parent::__construct($context, $entityManager, $metadataPool, SellerInterface::class, $connectionName);
         $this->dateTime = $dateTime;

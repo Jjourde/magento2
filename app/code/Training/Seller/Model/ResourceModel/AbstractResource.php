@@ -49,7 +49,7 @@ abstract class AbstractResource extends AbstractDb
     ) {
         $this->entityManager = $entityManager;
         $this->metadataPool = $metadataPool;
-        $this->$interfaceName = $interfaceName;
+        $this->interfaceName = $interfaceName;
         parent::__construct($context, $connectionName);
     }
 

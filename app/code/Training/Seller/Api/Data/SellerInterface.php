@@ -32,10 +32,10 @@ interface SellerInterface
     /**
      * Set seller id
      *
-     * @param $id int
+     * @param $sellerId int
      * @return $this
      */
-    public function setSellerId($id);
+    public function setSellerId($sellerId);
 
     /**
      * Get seller identifier
