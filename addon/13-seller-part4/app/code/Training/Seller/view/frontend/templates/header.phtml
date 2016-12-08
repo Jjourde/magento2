@@ -1,0 +1,16 @@
+<?php
+    /** @var $this \Magento\Framework\View\TemplateEngine\Php */
+    $helper = $this->helper('Training\Seller\Helper\Url');
+
+    /** @var $helper \Training\Seller\Helper\Url */
+    $url = $helper->getSellersUrl();
+?>
+<div style="
+    border: solid 1px <?php echo $block->getData('border_color'); ?>;
+    background-color: <?php echo $block->getData('background_color'); ?>;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+">
+    <a href="<?php /* @escapeNotVerified */ echo $url; ?>"><?php /* @escapeNotVerified */ echo __('Sellers List'); ?></a>
+</div>
