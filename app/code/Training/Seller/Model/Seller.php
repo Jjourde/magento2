@@ -109,6 +109,28 @@ class Seller extends AbstractModel implements IdentityInterface, SellerInterface
     }
 
     /**
+     * Get seller description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->getData(self::DESCRIPTION);
+    }
+
+    /**
+     * Set seller description
+     *
+     * @param string $description
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->setData(self::DESCRIPTION, $description);
+        return $this;
+    }
+
+    /**
      * Get seller created at
      *
      * @return null|string

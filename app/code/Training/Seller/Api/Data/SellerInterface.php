@@ -18,6 +18,7 @@ interface SellerInterface
     const SELLER_ID = 'seller_id';
     const IDENTIFIER = 'identifier';
     const NAME = 'name';
+    const DESCRIPTION = 'description';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     /**#@-*/
@@ -66,6 +67,21 @@ interface SellerInterface
      * @return $this
      */
     public function setName($name);
+
+    /**
+     * Get seller description
+     *
+     * @return string
+     */
+    public function getDescription();
+
+    /**
+     * Set seller description
+     *
+     * @param string $description
+     * @return $this
+     */
+    public function setDescription($description);
 
     /**
      * Get seller created at
