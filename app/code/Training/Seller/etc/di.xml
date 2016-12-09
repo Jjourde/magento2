@@ -35,4 +35,12 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin
+                name="training-seller-product"
+                type="Training\Seller\Plugin\Model\Product"
+                sortOrder="10"
+                disabled="false"
+        />
+    </type>
 </config>
