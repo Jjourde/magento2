@@ -1,44 +1,31 @@
 <?php
-
+/**
+ * Magento 2 Training Project
+ * Module Training/Seller
+ */
 namespace Training\Seller\Controller\Adminhtml\Seller;
 
-use Magento\Backend\App\Action;
-use Magento\Backend\App\Action\Context;
-use Training\Seller\Model\SellerFactory;
-
-class Index extends Action
+/**
+ * Admin Action : seller/index
+ *
+ * @author    Laurent MINGUET <lamin@smile.fr>
+ * @copyright 2016 Smile
+ */
+class Index extends AbstractAction
 {
-
-    protected $modelFactory;
-
-    public function __construct(
-        Context $context,
-        SellerFactory $modelFactory
-    ) {
-        parent::__construct($context);
-
-        $this->modelFactory = $modelFactory;
-    }
-
-    /**
-     * Is it allowed ?
-     *
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Training_Seller::manage');
-    }
     /**
      * Execute the action
      *
-     * @return void
+     * @return \Magento\Framework\View\Result\Page
      */
     public function execute()
     {
-        $seller = $this->modelFactory->create();
-        $seller->getResource()->load($seller, 1);
+        $breadMain = __('Manage Sellers');
 
-        $this->getResponse()->appendBody('Seller: ' . $seller->getId() . ', ' . $seller->getIdentifier() . ', ' . $seller->getName() );
+        $resultPage = $this->resultPageFactory->create();
+        $resultPage->setActiveMenu('Training_Seller::manage');
+        $resultPage->getConfig()->getTitle()->prepend($breadMain);
+
+        return $resultPage;
     }
 }

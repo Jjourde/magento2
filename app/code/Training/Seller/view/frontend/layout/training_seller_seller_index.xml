@@ -8,11 +8,12 @@
                   class="Training\Seller\Block\Seller\Index"
                   template="Training_Seller::seller/list.phtml" />
        </referenceContainer>
-        <referenceContainer> name="sidebar.main">
+        <referenceContainer name="sidebar.main">
             <block name="seller.list.filter"
                    class="Training\Seller\Block\Seller\Index"
                    template="Training_Seller::seller/list/filter.phtml" />
         </referenceContainer>
+
         <referenceBlock name="training.seller.content.top" remove="true" />
     </body>
 </page>
