@@ -14,12 +14,13 @@ use Magento\Customer\Setup\CustomerSetup;
 use Magento\Customer\Setup\CustomerSetupFactory;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend;
+use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\UpgradeDataInterface;
 use Training\Seller\Option\Seller;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Catalog\Model\Product;
+    use Magento\Catalog\Model\Product;
 
 class UpgradeData implements UpgradeDataInterface
 {
@@ -72,30 +73,33 @@ class UpgradeData implements UpgradeDataInterface
         if(version_compare($context->getVersion(), '1.0.3', '<')) {
             /** @var EavSetup $productSetup */
             $productSetup = $this->productSetupFactory->create(array('setup' => $setup));
+            $productSetup->removeAttribute( Product::ENTITY, 'training_seller_ids');
 
-            //Product Details tab
             $productSetup->addAttribute(
-                ProductAttributeInterface   ::ENTITY_TYPE_CODE,
+                Product::ENTITY,
                 'training_seller_ids',
-                array(
-                    'type' => 'varchar',
-                    'label' => 'Seller ids',
-                    'input' => 'multiselect',
-                    'source' => Seller::class,
-                    'backend_type' => 'varchar',
-                    'backend_model' => ArrayBackend::class,
-                    'required' => false,
-                    'user_defined' => true,
-                    'default' => '',
-                    'searchable' => false,
-                    'filterable' => false,
-                    'comparable' => true,
-                    'visible_on_front' => true,
-                    'used_in_product_listing' => false,
+                [
+                    'label'                    => 'Training Sellers',
+                    'type'                     => 'varchar',
+                    'input'                    => 'multiselect',
+                    'backend'                  => \Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend::class,
+                    'frontend'                 => '',
+                    'class'                    => '',
+                    'source'                   => \Training\Seller\Option\Seller::class,
+                    'global'                   => \Magento\Catalog\Model\ResourceModel\Eav\Attribute::SCOPE_GLOBAL,
+                    'visible'                  => true,
+                    'required'                 => false,
+                    'user_defined'             => true,
+                    'default'                  => '',
+                    'searchable'               => false,
+                    'filterable'               => false,
+                    'comparable'               => true,
+                    'visible_on_front'         => true,
+                    'used_in_product_listing'  => false,
                     'is_html_allowed_on_front' => true,
-                    'unique' => false,
-                    'apply_to' => 'simple,configurable'
-                )
+                    'unique'                   => false,
+                    'apply_to'                 => 'simple,configurable'
+                ]
             );
 
             $productSetup->addAttributeGroup(

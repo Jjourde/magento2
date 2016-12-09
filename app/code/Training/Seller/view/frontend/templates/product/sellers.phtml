@@ -1,0 +1,8 @@
+<?php $sellers = $block->getProductSellers(); ?>
+<?php if (count($sellers) > 0) : ?>
+    <ul>
+        <?php foreach ($sellers as $seller) : ?>
+            <li><?php echo $block->escapeHtml($seller->getIdentifier()); ?>: <?php echo $block->escapeHtml($seller->getName()); ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
